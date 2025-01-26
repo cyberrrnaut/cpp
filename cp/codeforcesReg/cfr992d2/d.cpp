@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,11 +38,13 @@ void fast_io() {
 }
 
 class Solution {
+
+
+
 public:
     void cyb3rnaut() {
       
-     
-    
+
     }
 };
 

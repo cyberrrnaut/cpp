@@ -24,7 +24,7 @@ ostream& operator<<(ostream& os, const pair<T1, T2>& p) {
 template<typename T>
 ostream& operator<<(ostream& os, const vector<T>& v) {
     os << '[';
-    for (int i = 0; i < sz(v); i++) {
+    for (int i = 0; i < sz(v) ; i++) {
         if (i) os << ", ";
         os << v[i];
     }
@@ -40,35 +40,58 @@ void fast_io() {
 
 class Solution {
 private:
-bool f(ll mid,vpll arr){
+bool check(vpll& arr ,ll mid){
 	
+    ll n =arr.size();
+
+    ll low=0;
+    ll high=0;
+
+    for(auto it:arr){
+
+        low=max(low-mid, it.first);
+        high=min(high+mid, it.second);
+        if(low>high)return false;
+    }
+
+    return true;
 }	
 
 public:
     void cyb3rnaut() {
-       ll n;
-       cin>>n;
+      
 
-       vpll arr;
+      ll n;
+      cin>>n;
 
-       for(ll i=0;i<n;i++){
-       	ll l,ll r;
-       	cin>>l>>r;
-        arr.pb({l,r});
-       }
-       
+      vector<pair<ll,ll>> arr;
+
+      for(int i=0;i<n;i++){
+        ll l;
+        ll r;
+        cin>>l>>r;
+
+        arr.push_back({l,r});
+      }
 
 
-       ll low = arr[0].first;
-       ll high = 1e9;
+     ll low= 0;
+     ll high= 1e9;
+      ll ans=0;
+     while(low<=high){
+        ll mid = low + (high-low)/2;
 
-       while(low<high){
+        if(check(arr,mid)){
+         ans=mid;
+         high=mid-1;
+        }else{
+         low= mid+1;
+        }
+     }
 
-       	ll mid= (low+ (high-low) )/2;
-
-       	bool check = f(mid,arr);
-
-       }
+        
+      
+      cout<<ans<<endl;
     }
 };
 

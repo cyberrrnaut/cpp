@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,11 +38,23 @@ void fast_io() {
 }
 
 class Solution {
+
+
+
 public:
     void cyb3rnaut() {
-      
-     
-    
+        ll n,k;
+        cin>>n>>k;
+
+        ll possible = n* (n-1)/2;
+
+        if(k>possible){
+            cout<<-1<<endl;
+            return;
+        }else{
+            cout<<0<<endl;
+        }
+
     }
 };
 

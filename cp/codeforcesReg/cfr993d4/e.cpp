@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -38,14 +37,36 @@ void fast_io() {
     cin.tie(0);
 }
 
+
 class Solution {
 public:
     void cyb3rnaut() {
-      
-     
-    
+        ll k, l1, r1, l2, r2;
+        cin >> k >> l1 >> r1 >> l2 >> r2;
+
+        vector<ll> feasiblePowers;
+        ll power = 1; // k^0
+        while (power <= r2) {
+            feasiblePowers.push_back(power);
+            if (power > r2 / k) break; 
+            power *= k;
+        }
+
+        ll ans = 0;
+
+        for (ll p : feasiblePowers) {
+            ll l_valid = max(l1, (l2 + p - 1) / p); // Ceil(l2 / p)
+            ll r_valid = min(r1, r2 / p);          // Floor(r2 / p)
+
+            if (l_valid <= r_valid) {
+                ans += (r_valid - l_valid + 1);
+            }
+        }
+
+        cout << ans << endl;
     }
 };
+
 
 void solve() {
     Solution s;

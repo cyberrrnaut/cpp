@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -40,19 +39,48 @@ void fast_io() {
 
 class Solution {
 public:
-    void cyb3rnaut() {
-      
-     
-    
+    void cyb3rnaut(const vector<int>& dp) {
+        int n;
+        cin >> n;
+
+        // Safeguard: Ensure `n` does not exceed precomputed range
+        if (n < 1 || n > 1e5) {
+            cout << "Invalid input\n";
+            return;
+        }
+
+        cout << dp[n] << endl;
     }
 };
 
 void solve() {
     Solution s;
+
+    // Precomputing the dp array
+    vector<int> dp(1e5 + 1);
+
+    int l = 1;
+    int range = 1;
+    int val = 1;
+    dp[l]=val;
+    l++;
+    while (l <= 1e5) {
+        // Update current range
+        range = (2 * range )+ 2;    
+        val++;
+        while (l <= 1e5 && l <= range) {
+            
+            dp[l] = val;
+            l++;
+        }
+    }
+
+ 
+
     ll t;
     cin >> t;
     while (t--) {
-        s.cyb3rnaut();
+        s.cyb3rnaut(dp);
     }
 }
 

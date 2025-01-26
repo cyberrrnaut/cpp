@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,11 +38,53 @@ void fast_io() {
 }
 
 class Solution {
+
+
+
 public:
     void cyb3rnaut() {
       
+      int n,k;
+
+      cin>>n>>k;
+
+      vector<int>arr(n);
+
+      for(int i=0;i<n;i++){
+        cin>>arr[i];
+      }
+
+     if(n==1){
+        // if(arr[0]%k!=0){
+            cout<<"YES"<<endl;
+            cout<<1<<endl;
+        // }else{
+        // cout<<"NO"<<endl;
+        // }
+      return;
+    }
+
+
+    for(int i=0;i<n;i++){
+      bool flag =true;
+      for(int j=0;j<n;j++)
+      {
+        if(i!=j){
+         int diff= abs(arr[i]-arr[j]);
+         if(diff%k==0){
+            flag=false;
+            break;
+         }
+        }
+      }
+      if(flag){
+        cout<<"YES"<<endl;
+        cout<<i+1<<endl;
+        return;
+      }
+    }
      
-    
+     cout<<"NO"<<endl;
     }
 };
 

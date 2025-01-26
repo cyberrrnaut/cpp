@@ -1,9 +1,10 @@
-#include<bits/stdc++.h>
-
-
+#include <bits/stdc++.h>
 using namespace std;
+
 typedef long long ll;
 
+#define fast_io() ios_base::sync_with_stdio(false); cin.tie(0);
+ 
 template <class T>
 class SegmentTree {
     int n;
@@ -16,7 +17,7 @@ public:
     }
 
     T comb(T a, T b) {
-        return a + b;
+        return min( a , b );
     }
 
     void build(int start, int end, int node, vector<T>& arr) {
@@ -38,7 +39,7 @@ public:
     }
 
     T query(int start, int end, int l, int r, int node) {
-        if (start > r || end < l) return 0;
+        if (start > r || end < l) return INT_MAX;
 
         if (start >= l && end <= r) return st[node];
 
@@ -78,21 +79,62 @@ public:
 };
 
 
-
-int main(){
-  
-  vector<ll>arr={3, 6 , 7 ,4 ,3 , 23, 2 , 2 ,11,9 };
-
-  SegmentTree<ll> tree;
-  
-
-  tree.init(10); 
-
- tree.build(arr);
-
- cout<< tree.query(0,2);
  
 
+class Solution {
+public:
+    void stillcyb3rnaut() {
+        ll n, q;
+        cin >> n >> q;
 
-  return 0;
+        vector<ll> arr(n);
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+
+        SegmentTree<ll> st;
+ 
+        st.init(n);
+ 
+        st.build(arr);
+
+       
+
+        for (int i = 0; i < q; i++) {
+            ll type, start, end;
+
+            cin >> type >> start >> end;
+
+            ll stAns = 0LL;
+             if (type == 1) {
+                ll ind = start - 1;
+                ll val = end;
+
+                st.update(ind, val);
+             } else { // type == 2
+                start--;
+                end--;
+
+                stAns = st.query(start, end);
+                 
+                
+                    cout << stAns << endl;
+                
+               
+            }
+        }
+    }
+};
+
+
+void solve() {
+    Solution s;
+    s.stillcyb3rnaut();
 }
+
+int main() {
+    fast_io();
+    solve();
+    return 0;
+}
+

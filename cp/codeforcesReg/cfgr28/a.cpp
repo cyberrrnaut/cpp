@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -38,14 +37,21 @@ void fast_io() {
     cin.tie(0);
 }
 
+
 class Solution {
 public:
     void cyb3rnaut() {
-      
-     
-    
+      ll n;
+      cin>>n;
+
+      if(n%33==0){
+        cout<<"YES"<<endl;
+      }else{
+      cout<<"NO"<<endl; 
+      }  
     }
 };
+
 
 void solve() {
     Solution s;

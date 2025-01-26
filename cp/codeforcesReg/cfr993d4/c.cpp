@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -41,9 +40,24 @@ void fast_io() {
 class Solution {
 public:
     void cyb3rnaut() {
-      
-     
     
+     ll m,a,b,c;
+     cin>>m>>a>>b>>c;
+
+     ll ans=0;
+
+     ll first= min(a,m);
+     ll second= min(b,m);
+
+     ll left = 2*m - (first+second);
+
+     if(left>0){
+        ans+= min(left,c);
+     }
+     ans+= first;
+     ans+= second;
+
+     cout<<ans<<endl;
     }
 };
 

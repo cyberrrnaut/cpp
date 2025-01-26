@@ -1,4 +1,3 @@
-//E. Iva & Pav
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -37,16 +36,38 @@ void fast_io() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
 }
-
 class Solution {
 public:
     void cyb3rnaut() {
-      
-     
-    
+        ll n;
+        cin >> n;
+
+        vll arr(n);
+        for (int i = 0; i < n; i++) cin >> arr[i];
+
+        set<int> availableNumbers; 
+        for (int i = 1; i <= n; i++) availableNumbers.insert(i);  
+
+        vector<int> result(n);
+
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            
+            if (availableNumbers.count(num)) { 
+                result[i] = num;                  
+                availableNumbers.erase(num);
+            } else { 
+                result[i] = *availableNumbers.begin();  
+                availableNumbers.erase(availableNumbers.begin());
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            cout << result[i] << " ";
+        }
+        cout << endl;
     }
 };
-
 void solve() {
     Solution s;
     ll t;
